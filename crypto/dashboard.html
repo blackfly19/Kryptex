@@ -1,0 +1,133 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>KryptIT</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <table class="table table-striped table-bordered" width="100%">
+     
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+                <th>Extn.</th>
+                <th>E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger</td>
+                <td>Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+                <td>5421</td>
+                <td>t.nixon@datatables.net</td>
+            </tr>
+            <tr>
+                <td>Garrett</td>
+                <td>Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+                <td>8422</td>
+                <td>g.winters@datatables.net</td>
+            </tr>
+            <tr>
+                <td>Ashton</td>
+                <td>Cox</td>
+                <td>Junior Technical Author</td>
+                <td>San Francisco</td>
+                <td>66</td>
+                <td>2009/01/12</td>
+                <td>$86,000</td>
+                <td>1562</td>
+                <td>a.cox@datatables.net</td>
+            </tr>
+            <tr>
+                <td>Doris</td>
+                <td>Wilder</td>
+                <td>Sales Assistant</td>
+                <td>Sidney</td>
+                <td>23</td>
+                <td>2010/09/20</td>
+                <td>$85,600</td>
+                <td>3023</td>
+                <td>d.wilder@datatables.net</td>
+            </tr>
+        </tbody>
+    </table>
+</head>
+<body>
+    <script>
+        function CreateTableFromJSON() {
+            var myBooks = [
+                {
+                    "Book ID": "1",
+                    "Book Name": "Computer Architecture",
+                    "Category": "Computers",
+                    "Price": "125.60"
+                },
+                {
+                    "Book ID": "2",
+                    "Book Name": "Asp.Net 4 Blue Book",
+                    "Category": "Programming",
+                    "Price": "56.00"
+                },
+                {
+                    "Book ID": "3",
+                    "Book Name": "Popular Science",
+                    "Category": "Science",
+                    "Price": "210.40"
+                }
+            ]
+            // EXTRACT VALUE FOR HTML HEADER. 
+            // ('Book ID', 'Book Name', 'Category' and 'Price')
+            var col = [];
+            for (var i = 0; i < myBooks.length; i++) {
+                for (var key in myBooks[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+            // CREATE DYNAMIC TABLE.
+            var table = document.createElement("table");
+            // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+            var tr = table.insertRow(-1);                   // TABLE ROW.
+            for (var i = 0; i < col.length; i++) {
+                var th = document.createElement("th");      // TABLE HEADER.
+                th.innerHTML = col[i];
+                tr.appendChild(th);
+            }
+            // ADD JSON DATA TO THE TABLE AS ROWS.
+            for (var i = 0; i < myBooks.length; i++) {
+                tr = table.insertRow(-1);
+                for (var j = 0; j < col.length; j++) {
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = myBooks[i][col[j]];
+                }
+            }
+            // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+            var divContainer = document.getElementById("showData");
+            divContainer.innerHTML = "";
+            divContainer.appendChild(table);
+        }
+    </script>
+</body>
