@@ -14,5 +14,12 @@ def home(request):
         val['USD']['NAME'] = coins_list[i]
         val['USD']['IMAGEURL'] = 'https://www.cryptocompare.com'+val['USD']['IMAGEURL']
     context = {'coins':data['DISPLAY']}
-    return render(request, 'crypto/index.html',context)
+    return render(request, 'crypto/table.html',context)
     #return HttpResponse("Hello World from kryptex")
+
+
+def graphs(request):
+    return render(request, 'crypto/index.html')
+
+def realTime(request):
+    return render(request,'crypto/graph.html')
