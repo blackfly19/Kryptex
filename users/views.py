@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def signUpPage(request):
+    return render(request, 'users/signUp.html')
